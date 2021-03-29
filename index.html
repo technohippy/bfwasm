@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <body>
+    wasm
+  <script>
+  const out = []
+  const importObject = {
+    js: {
+      mem: new WebAssembly.Memory({initial:1}),
+      global: new WebAssembly.Global({value: "i32", mutable: true}, 0),
+      getchar: () => (window.prompt("input char") || " ").charCodeAt(0),
+      putchar: (code) => { out.push(String.fromCharCode(code)) }
+    }
+  }
+  WebAssembly.instantiateStreaming(fetch('bf.wasm'), importObject).then(obj => {
+    obj.instance.exports.main()
+    console.log(out.join(""))
+  })
+  </script>
+  </body>
+</html>
+
