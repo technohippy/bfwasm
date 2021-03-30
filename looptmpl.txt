@@ -1,0 +1,21 @@
+; function body 4
+0000093: 00                                        ; func body size (guess)
+0000094: 00                                        ; local decl count
+0000095: 02                                        ; block
+0000096: 40                                        ; void
+0000097: 03                                        ; loop
+0000098: 40                                        ; void
+0000099: 23                                        ; global.get
+000009a: 00                                        ; global index
+000009b: 28                                        ; i32.load
+000009c: 02                                        ; alignment
+000009d: 00                                        ; load offset
+000009e: 45                                        ; i32.eqz
+000009f: 0d                                        ; br_if
+00000a0: 01                                        ; break depth
+00000a1: 10                                        ; call
+00000a2: 05                                        ; function index
+00000a3: 0c                                        ; br
+00000a4: 00                                        ; break depth
+00000a5: 0b                                        ; end
+00000a6: 0b                                        ; end

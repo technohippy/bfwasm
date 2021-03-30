@@ -14,7 +14,8 @@
       putchar: (code) => { out.push(String.fromCharCode(code)) }
     }
   }
-  WebAssembly.instantiateStreaming(fetch('bf.wasm'), importObject).then(obj => {
+  //WebAssembly.instantiateStreaming(fetch('bf.wasm'), importObject).then(obj => {
+  WebAssembly.instantiateStreaming(fetch('bfhw.wasm'), importObject).then(obj => {
     obj.instance.exports.main()
     console.log(out.join(""))
   })
