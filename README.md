@@ -20,7 +20,7 @@ How to run
 ----
 
 ```
-$ deno run --allow-read src/bf.ts bf.wasm
+$ deno run --allow-read src/bf.ts hw.wasm
 ```
 
 How to install
