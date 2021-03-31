@@ -1,4 +1,4 @@
-// deno run --allow-read --allow-write src/bfc.ts src/hw.bf -o hw.wasm
+// deno run --allow-read --allow-write src/bfc.ts -o hw.wasm src/hw.bf
 import * as bc from "./bytecodes.ts";
 const {args, exit, readFile, writeFile} = Deno;
 
@@ -28,14 +28,14 @@ for (let i = 0; i < args.length; i++) {
 	if (arg.startsWith("-")) continue;
 
 	const argType = args[i - 1];
-	if (!argType) {
-		const decoder = new TextDecoder("utf-8");
-		const data = await readFile(arg);
-		bfcode = decoder.decode(data);
-	} else if (argType === "-e") {
+	if (argType === "-e") {
 		bfcode = arg;
 	} else if (argType === "-o") {
 		outfile = arg;
+	} else {
+		const decoder = new TextDecoder("utf-8");
+		const data = await readFile(arg);
+		bfcode = decoder.decode(data);
 	}
 }
 
