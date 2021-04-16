@@ -7,7 +7,7 @@ How to compile
 ----
 
 ```
-$ deno run --allow-read --allow-write src/bfc.ts -o hw.wasm src/hw.bf
+$ deno run --allow-read --allow-write src/bfc.ts -o hw.wasm samples/hw.bf
 ```
 
 or 
@@ -34,6 +34,6 @@ $ deno install --allow-read --name bf src/bf.ts
 After the installation, you can use these commands as follows:
 
 ```
-$ bfc -o hw.wasm src/hw.bf
+$ bfc -o hw.wasm samples/hw.bf
 $ bf src/hw.wasm
 ```

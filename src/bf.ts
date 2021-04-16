@@ -14,7 +14,7 @@ const instance = new WebAssembly.Instance(module, {
 	js: {
 		mem: new WebAssembly.Memory({initial:1}),
 		global: new WebAssembly.Global({value: "i32", mutable: true}, 0),
-		getchar: () => (window.prompt("input char") || " ").charCodeAt(0),
+		getchar: () => (prompt("input char") || " ").charCodeAt(0),
 		putchar: (code:number) => { out.push(String.fromCharCode(code)) }
 	}
 });

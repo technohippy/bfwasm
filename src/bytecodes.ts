@@ -23,7 +23,7 @@ export const header = [
   0x02,                                        // section code
   0x32,                                        // section size (guess)
   0x04,                                        // num imports
-  // import hea der 0
+  // import header 0
   0x02,                                        // string length
   0x6a, 0x73,                                  // js  // import module name
   0x03,                                        // string length
@@ -31,21 +31,21 @@ export const header = [
   0x02,                                        // import kind
   0x00,                                        // limits: flags
   0x01,                                        // limits: initial
-  // import hea der 1
+  // import header 1
   0x02,                                        // string length
   0x6a, 0x73,                                  // js  // import module name
   0x07,                                        // string length
   0x67, 0x65, 0x74, 0x63, 0x68, 0x61, 0x72,    // getchar  // import field name
   0x00,                                        // import kind
   0x00,                                        // import signature index
-  // import hea der 2
+  // import header 2
   0x02,                                        // string length
   0x6a, 0x73,                                  // js  // import module name
   0x07,                                        // string length
   0x70, 0x75, 0x74, 0x63, 0x68, 0x61, 0x72,    // putchar  // import field name
   0x00,                                        // import kind
   0x01,                                        // import signature index
-  // import hea der 3
+  // import header 3
   0x02,                                        // string length
   0x6a, 0x73,                                  // js  // import module name
   0x06,                                        // string length
@@ -138,6 +138,7 @@ export const codeSection = [
 // function body 4
 
 const funcCodes:{[key:string]: number} = {
+	getchar: 0x00,
 	putchar: 0x01,
 	pinc: 0x02,
 	pdec: 0x03,
@@ -145,14 +146,14 @@ const funcCodes:{[key:string]: number} = {
 	vdec: 0x05,
 }
 
-export const callFunc = (name:string) => {
+export const callFunc = (name:string):number[] => {
 	return [
 		0x10, // call
 		funcCodes[name],
 	]
 }
 
-export const callPutchar = () => {
+export const callPutchar = ():number[] => {
   return [
     0x23,      // global.get
     0x00,      // global index
@@ -160,6 +161,14 @@ export const callPutchar = () => {
     0x02,      // alignment
     0x00,      // load offset
   ].concat(callFunc("putchar"))
+}
+
+export const callGetchar = ():number[] => {
+  //return callFunc("getchar")
+  return [
+    0x00,      // alignment
+    0x00,      // load offset
+  ].concat(callFunc("getchar"))//.concat(callFunc("pinc"))
 }
 
 export const startLoop = [

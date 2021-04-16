@@ -68,7 +68,8 @@ bfcode.split("").forEach(c => {
 			funcBody.push(...bc.callPutchar())
 			break;
 		case ",":
-			throw "not yet implemented"
+			funcBody.push(...bc.callGetchar())
+			break;
 	}
 })
 
